@@ -72,7 +72,7 @@ function createMarkup(arr) {
   return arr
     .map(
       ({ preview, original, description }) =>
-        `<li class="list-item" data-id="${original}">
+        `<li class="list-item">
         <a class="gallery-link" href="${original}">
           <img
             class="gallery-image"
@@ -95,7 +95,8 @@ gallery.addEventListener('click', (event) => {
     return;
   }
 
-  const { original, description } = images.find(({ original }) => original === event.target.dataset.source);
+  const original = event.target.dataset.source;
+  const description = event.target.alt;
 
   const instance = basicLightbox.create(`
       <div class ="modal">
